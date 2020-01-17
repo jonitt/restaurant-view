@@ -9,7 +9,6 @@ import PageFooter from '../components/page-footer/PageFooter.js';
 function App() {
   return (
     <div className={styles.container}>
-      heloust
       <RestaurantList />
       {/*
         <PageHeader />
