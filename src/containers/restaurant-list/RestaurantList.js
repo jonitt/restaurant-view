@@ -2,40 +2,59 @@ import React, { Component } from 'react';
 import styles from './RestaurantList.module.css';
 import restaurants from './../../utils/data/restaurants.json';
 import ListEntry from './ListEntry';
-import { Grid, Container } from '@material-ui/core';
+import { Grid, Container, Button } from '@material-ui/core';
 
 export default class RestaurantList extends Component {
   state = {
-    listEntries: []
+    listEntries: [],
+    sorting: 'asc'
   };
 
-  //function to sort by name, ascending and descending
+  /**
+   * Returns restaurant objects sorted by their names.
+   * THe function assumes that 'sorting' value is not an improper string
+   * @param {list} restaurants list of restaurant objects
+   * @param {string} sorting sorting order
+   */
+  sortByName(restaurants, sorting) {
+    const val = sorting === 'asc' ? 1 : -1;
+    return restaurants.sort((a, b) =>
+      a.name > b.name ? val : -1 * val
+    );
+  }
 
-  //function to create entry for each element
-  createEntries = () => {
-    const { restaurants } = this.props,
-      listEntries = restaurants.restaurants.map(e => e);
-
+  /**
+   * Reverses sorting variable.
+   * @param {string} currentSorting
+   */
+  changeSorting(currentSorting) {
     this.setState({
-      listEntries: listEntries
+      sorting: currentSorting === 'asc' ? 'des' : 'asc'
     });
-  };
+  }
 
   //make images lazy load when scrolling down, with a loading circle
 
   render() {
-    console.log(restaurants);
+    const { sorting } = this.state;
     return (
       <Container maxWidth={false} disableGutters={true}>
         <Grid className={styles.container}>
-          SORT
+          <Button
+            onClick={() => this.changeSorting(sorting)}
+          >
+            SORT
+          </Button>
           <Grid
             spacing='3'
             container
             direction='row'
             justify='center'
           >
-            {restaurants.restaurants.map(r => (
+            {this.sortByName(
+              restaurants.restaurants,
+              sorting
+            ).map(r => (
               <ListEntry restaurant={r} />
             ))}
           </Grid>

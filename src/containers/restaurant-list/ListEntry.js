@@ -21,26 +21,39 @@ export default class RestaurantList extends Component {
             classes={{ root: styles.image }}
             image={restaurant.image}
           >
-            <Grid style={{height: '100%'}} container direction='row' justify='flex-end' alignItems='flex-end' alignContent='flex-end'>
-              <Grid item xs={2}>
+            <Grid
+              style={{ height: '100%' }}
+              container
+              direction='column'
+              justify='space-between'
+            >
+              <Grid item 
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)'
+                  }}>
                 <Typography
                   style={{
                     color: 'white',
                     fontSize: '1.8rem',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    paddingRight: '5px'
                   }}
                   align='right'
                 >
                   {restaurant.city}
                 </Typography>
               </Grid>
-              <Grid item xs={10}>
+              <Grid
+                item
+                style={{
+                  width: '100%'
+                }}
+              >
                 <CardContent
                   classes={{ root: styles.bottomContent }}
                 >
                   <Typography
                     style={{
-                      fontSize: '2.4rem',
+                      fontSize: '2.5rem',
                       color: 'white'
                     }}
                     align='center'
