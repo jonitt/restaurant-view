@@ -40,11 +40,19 @@ export default class RestaurantList extends Component {
     return (
       <Container maxWidth={false} disableGutters={true}>
         <Grid className={styles.container}>
-          <Button
-            onClick={() => this.changeSorting(sorting)}
-          >
-            SORT
-          </Button>
+          <Grid justify='flex-end' container item>
+            <Button
+              onClick={() => this.changeSorting(sorting)}
+              style={{
+                fontSize: '2rem',
+                paddingRight: '50px',
+                paddingTop: '20px',
+                paddingBottom:'20px'
+              }}
+            >
+              {'ABC ^v'}
+            </Button>
+          </Grid>
           <Grid
             spacing='3'
             container
