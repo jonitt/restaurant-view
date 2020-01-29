@@ -7,11 +7,13 @@ import {
   Card,
   CardContent
 } from '@material-ui/core';
-import { borders } from '@material-ui/system';
 
 export default class RestaurantList extends Component {
   state = {};
 
+  /**
+   * Forms a string with the delivery information
+   */
   formDeliveryString(restaurant) {
     const deliveryPrice = (
       restaurant.delivery_price / 100.0
@@ -48,10 +50,9 @@ export default class RestaurantList extends Component {
               >
                 <Typography
                   style={{
-                    color: 'white',
-                    fontSize: '1.5rem',
-                    paddingRight: '13px'
+                    paddingRight: '13px',
                   }}
+                  variant='body1'
                   align='right'
                 >
                   {this.formDeliveryString(restaurant)}
@@ -67,19 +68,13 @@ export default class RestaurantList extends Component {
                   classes={{ root: styles.bottomContent }}
                 >
                   <Typography
-                    style={{
-                      fontSize: '2.5rem',
-                      color: 'white'
-                    }}
+                    variant='h2'
                     align='center'
                   >
                     {restaurant.name}
                   </Typography>
                   <Typography
-                    style={{
-                      fontSize: '1.8rem',
-                      color: 'white'
-                    }}
+                    variant='body2'
                     align='center'
                   >
                     {restaurant.description}

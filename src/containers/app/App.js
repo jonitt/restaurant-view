@@ -1,21 +1,16 @@
 import React from 'react';
 import styles from './App.module.css';
-
 import RestaurantList from '../restaurant-list/RestaurantList.js';
-/*import PageHeader from '../components/page-header/PageHeader.js';
-import PageFooter from '../components/page-footer/PageFooter.js';
-*/
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from '../../utils/theme';
 
 function App() {
   return (
-    <div className={styles.container}>
-      <RestaurantList />
-      {/*
-        <PageHeader />
-        <RestauntList />
-        <PageFooter />
-      */}
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={styles.container}>
+        <RestaurantList />
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -7,7 +7,8 @@ import {
   Container,
   Button,
   AppBar,
-  Toolbar
+  Toolbar,
+  Typography
 } from '@material-ui/core';
 
 export default class RestaurantList extends Component {
@@ -67,18 +68,17 @@ export default class RestaurantList extends Component {
                     this.changeSorting(sorting)
                   }
                   style={{
-                    fontWeight: '600',
-                    color: 'black',
-                    fontSize: '1.5rem',
                     paddingRight: '20px',
                     paddingLeft: '20px',
                     paddingTop: '20px',
                     paddingBottom: '20px'
                   }}
                 >
-                  {'Järjestä nimen mukaan'}
+                  <Typography variant='button'>
+                    {'Järjestä nimen mukaan'}
+                  </Typography>
                   <i
-                    style={{paddingLeft: '7px'}}
+                    style={{ paddingLeft: '7px' }}
                     class={
                       sorting === 'asc'
                         ? this.sortDownIcon
