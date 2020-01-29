@@ -7,16 +7,29 @@ import {
   Card,
   CardContent
 } from '@material-ui/core';
+import { borders } from '@material-ui/system';
 
 export default class RestaurantList extends Component {
   state = {};
+
+  formDeliveryString(restaurant) {
+    const deliveryPrice = (
+      restaurant.delivery_price / 100.0
+    ).toFixed(2);
+
+    return `Kuljetusmaksu ${deliveryPrice} ${restaurant.currency}`;
+  }
 
   render() {
     const { props } = this;
     const { restaurant } = props;
     return (
-      <Grid item>
-        <Card className={styles.container}>
+      <Grid item borderRadius='50%'>
+        <Card
+          className={styles.container}
+          borderRadius='50%'
+          style={{ borderRadius: '5%' }}
+        >
           <CardMedia
             classes={{ root: styles.image }}
             image={restaurant.image}
@@ -27,19 +40,21 @@ export default class RestaurantList extends Component {
               direction='column'
               justify='space-between'
             >
-              <Grid item 
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.4)'
-                  }}>
+              <Grid
+                item
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)'
+                }}
+              >
                 <Typography
                   style={{
                     color: 'white',
-                    fontSize: '1.8rem',
-                    paddingRight: '5px'
+                    fontSize: '1.5rem',
+                    paddingRight: '13px'
                   }}
                   align='right'
                 >
-                  {restaurant.city}
+                  {this.formDeliveryString(restaurant)}
                 </Typography>
               </Grid>
               <Grid

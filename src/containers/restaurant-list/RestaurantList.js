@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import styles from './RestaurantList.module.css';
 import restaurants from './../../utils/data/restaurants.json';
 import ListEntry from './ListEntry';
-import { Grid, Container, Button } from '@material-ui/core';
+import {
+  Grid,
+  Container,
+  Button,
+  AppBar,
+  Toolbar
+} from '@material-ui/core';
 
 export default class RestaurantList extends Component {
   state = {
     listEntries: [],
     sorting: 'asc'
   };
+
+  sortUpIcon = 'fas fa-sort-up';
+  sortDownIcon = 'fas fa-sort-down';
 
   /**
    * Returns restaurant objects sorted by their names.
@@ -40,24 +49,52 @@ export default class RestaurantList extends Component {
     return (
       <Container maxWidth={false} disableGutters={true}>
         <Grid className={styles.container}>
-          <Grid justify='flex-end' container item>
-            <Button
-              onClick={() => this.changeSorting(sorting)}
-              style={{
-                fontSize: '2rem',
-                paddingRight: '50px',
-                paddingTop: '20px',
-                paddingBottom:'20px'
-              }}
+          <AppBar
+            position='relative'
+            style={{
+              marginBottom: '30px',
+              backgroundColor: '#138ad4'
+            }}
+          >
+            <Toolbar
+              disableGutters={true}
+              variant='dense'
+              style={{ marginRight: 0, paddingRight: 0 }}
             >
-              {'ABC ^v'}
-            </Button>
-          </Grid>
+              <Grid justify='center' container item>
+                <Button
+                  onClick={() =>
+                    this.changeSorting(sorting)
+                  }
+                  style={{
+                    fontWeight: '600',
+                    color: 'black',
+                    fontSize: '1.5rem',
+                    paddingRight: '20px',
+                    paddingLeft: '20px',
+                    paddingTop: '20px',
+                    paddingBottom: '20px'
+                  }}
+                >
+                  {'Järjestä nimen mukaan'}
+                  <i
+                    style={{paddingLeft: '7px'}}
+                    class={
+                      sorting === 'asc'
+                        ? this.sortDownIcon
+                        : this.sortUpIcon
+                    }
+                  ></i>
+                </Button>
+              </Grid>
+            </Toolbar>
+          </AppBar>
           <Grid
             spacing='3'
             container
             direction='row'
             justify='center'
+            style={{ width: '100%' }}
           >
             {this.sortByName(
               restaurants.restaurants,
