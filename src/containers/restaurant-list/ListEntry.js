@@ -49,14 +49,16 @@ export default class RestaurantList extends Component {
                 }}
               >
                 <Typography
-                className='deliveryInfo'
+                  className='deliveryInfo'
                   style={{
-                    paddingRight: '13px',
+                    paddingRight: '13px'
                   }}
                   variant='body1'
                   align='right'
                 >
-                  {restaurant ? this.formDeliveryString(restaurant) : ''}
+                  {restaurant
+                    ? this.formDeliveryString(restaurant)
+                    : ''}
                 </Typography>
               </Grid>
               <Grid
@@ -68,17 +70,16 @@ export default class RestaurantList extends Component {
                 <CardContent
                   classes={{ root: styles.bottomContent }}
                 >
-                  <Typography
-                    variant='h2'
-                    align='center'
-                  >
+                  <Typography variant='h2' align='center'>
                     {restaurant ? restaurant.name : ''}
                   </Typography>
                   <Typography
                     variant='body2'
                     align='center'
                   >
-                    {restaurant ? restaurant.description : ''}
+                    {restaurant
+                      ? restaurant.description
+                      : ''}
                   </Typography>
                 </CardContent>
               </Grid>

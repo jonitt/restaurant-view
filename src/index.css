@@ -16,3 +16,11 @@ body,
   margin: 0;
   padding: 0;
 }
+
+.fullHeight {
+  height: 100%
+}
+
+.fullWidth {
+  height: 100%
+}

@@ -10,9 +10,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('RestaurantList', () => {
   test('Renders 50 ListEntry elements', () => {
-    const wrapper = shallow(
-      <RestaurantList />
-    );
+    const wrapper = shallow(<RestaurantList />);
     expect(wrapper.find(ListEntry)).toHaveLength(50);
   });
 });
