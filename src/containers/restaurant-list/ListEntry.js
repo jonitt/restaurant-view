@@ -34,7 +34,7 @@ export default class RestaurantList extends Component {
         >
           <CardMedia
             classes={{ root: styles.image }}
-            image={restaurant.image}
+            image={restaurant ? restaurant.image : ''}
           >
             <Grid
               style={{ height: '100%' }}
@@ -49,13 +49,14 @@ export default class RestaurantList extends Component {
                 }}
               >
                 <Typography
+                className='deliveryInfo'
                   style={{
                     paddingRight: '13px',
                   }}
                   variant='body1'
                   align='right'
                 >
-                  {this.formDeliveryString(restaurant)}
+                  {restaurant ? this.formDeliveryString(restaurant) : ''}
                 </Typography>
               </Grid>
               <Grid
@@ -71,13 +72,13 @@ export default class RestaurantList extends Component {
                     variant='h2'
                     align='center'
                   >
-                    {restaurant.name}
+                    {restaurant ? restaurant.name : ''}
                   </Typography>
                   <Typography
                     variant='body2'
                     align='center'
                   >
-                    {restaurant.description}
+                    {restaurant ? restaurant.description : ''}
                   </Typography>
                 </CardContent>
               </Grid>

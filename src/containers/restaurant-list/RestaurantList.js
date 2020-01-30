@@ -22,7 +22,6 @@ export default class RestaurantList extends Component {
 
   /**
    * Returns restaurant objects sorted by their names.
-   * THe function assumes that 'sorting' value is not an improper string
    * @param {list} restaurants list of restaurant objects
    * @param {string} sorting sorting order
    */
@@ -99,8 +98,8 @@ export default class RestaurantList extends Component {
             {this.sortByName(
               restaurants.restaurants,
               sorting
-            ).map(r => (
-              <ListEntry restaurant={r} />
+            ).map((r, i) => (
+              <ListEntry key={i} restaurant={r} />
             ))}
           </Grid>
         </Grid>

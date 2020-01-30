@@ -4,16 +4,15 @@ import ListEntry from '../containers/restaurant-list/ListEntry';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Typography } from '@material-ui/core';
+import RestaurantList from '../containers/restaurant-list/RestaurantList';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const mockRestaurant = { image: '' };
-
-describe('ListEntry', () => {
-  test('Renders 3 Typography elements', () => {
+describe('RestaurantList', () => {
+  test('Renders 50 ListEntry elements', () => {
     const wrapper = shallow(
-      <ListEntry restaurant={mockRestaurant} />
+      <RestaurantList />
     );
-    expect(wrapper.find(Typography)).toHaveLength(3);
+    expect(wrapper.find(ListEntry)).toHaveLength(50);
   });
 });
